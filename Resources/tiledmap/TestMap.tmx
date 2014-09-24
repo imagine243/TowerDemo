@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+  <terraintypes>
+   <terrain name="新地形" tile="9"/>
+   <terrain name="新地形" tile="33">
+    <properties>
+     <property name="wall" value="1"/>
+    </properties>
+   </terrain>
+  </terraintypes>
+  <tile id="0" terrain=",,,0"/>
+  <tile id="1" terrain=",,0,0">
+   <properties>
+    <property name="aaa" value="bbb"/>
+   </properties>
+  </tile>
+  <tile id="2" terrain=",,0,">
+   <properties>
+    <property name="aaa" value="ccc"/>
+   </properties>
+  </tile>
+  <tile id="8" terrain=",0,,0"/>
+  <tile id="9" terrain="0,0,0,0"/>
+  <tile id="10" terrain="0,,0,"/>
+  <tile id="16" terrain=",0,,"/>
+  <tile id="17" terrain="0,0,,"/>
+  <tile id="18" terrain="0,,,"/>
+  <tile id="19" terrain="0,0,0,"/>
+  <tile id="20" terrain="0,0,,0"/>
+  <tile id="24" terrain=",,,1">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="25" terrain=",,1,1">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="26" terrain=",,1,">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="27" terrain="0,,0,0"/>
+  <tile id="28" terrain=",0,0,0"/>
+  <tile id="32" terrain=",1,,1">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="33" terrain="1,1,1,1">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="34" terrain="1,,1,">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="35" terrain="1,1,1,">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="36" terrain="1,1,,1">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="40" terrain=",1,,">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="41" terrain="1,1,,">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="42" terrain="1,,,">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="43" terrain="1,,1,1">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+  <tile id="44" terrain=",1,1,1">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="layer1" width="40" height="30">
+  <properties>
+   <property name="ccc" value="sdsd"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1L0OgCAMRtGqkzr5tynv/5jgaoilQi3GbzhjyU0KOCJyABFN0CrL6euDQRn66ulbg5mxCWdK9o0KM6nvqDPqS70HsXP+0Lcze7Pu46S+M6u+nD0cFfU9vQNX083OJP+fVl8ptfdJ93BaXuwDAAD4Mg/B93FB
+  </data>
+ </layer>
+</map>

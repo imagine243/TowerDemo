@@ -69,6 +69,14 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E516E92919D271E800237229 /* TiledMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E92719D271E800237229 /* TiledMapLayer.cpp */; };
+		E516E92A19D271E800237229 /* TiledMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E92719D271E800237229 /* TiledMapLayer.cpp */; };
+		E516E92D19D2724500237229 /* TiledMapScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E92B19D2724500237229 /* TiledMapScene.cpp */; };
+		E516E92E19D2724500237229 /* TiledMapScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E92B19D2724500237229 /* TiledMapScene.cpp */; };
+		E516E93019D274D800237229 /* tiledmap in Resources */ = {isa = PBXBuildFile; fileRef = E516E92F19D274D800237229 /* tiledmap */; };
+		E516E93119D274D800237229 /* tiledmap in Resources */ = {isa = PBXBuildFile; fileRef = E516E92F19D274D800237229 /* tiledmap */; };
+		E516E93519D29D3100237229 /* GridMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E93319D29D3100237229 /* GridMap.cpp */; };
+		E516E93619D29D3100237229 /* GridMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E93319D29D3100237229 /* GridMap.cpp */; };
 		E556F8C119CFFBC300BDC29A /* Sprite3DScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E556F8BF19CFFBC300BDC29A /* Sprite3DScene.cpp */; };
 		E556F8C519D018DF00BDC29A /* Sprite3DTest in Resources */ = {isa = PBXBuildFile; fileRef = E556F8C419D018DF00BDC29A /* Sprite3DTest */; };
 		E556F8C619D018DF00BDC29A /* Sprite3DTest in Resources */ = {isa = PBXBuildFile; fileRef = E556F8C419D018DF00BDC29A /* Sprite3DTest */; };
@@ -270,6 +278,13 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E516E92719D271E800237229 /* TiledMapLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TiledMapLayer.cpp; sourceTree = "<group>"; };
+		E516E92819D271E800237229 /* TiledMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledMapLayer.h; sourceTree = "<group>"; };
+		E516E92B19D2724500237229 /* TiledMapScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TiledMapScene.cpp; sourceTree = "<group>"; };
+		E516E92C19D2724500237229 /* TiledMapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledMapScene.h; sourceTree = "<group>"; };
+		E516E92F19D274D800237229 /* tiledmap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiledmap; sourceTree = "<group>"; };
+		E516E93319D29D3100237229 /* GridMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridMap.cpp; sourceTree = "<group>"; };
+		E516E93419D29D3100237229 /* GridMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridMap.h; sourceTree = "<group>"; };
 		E556F8BF19CFFBC300BDC29A /* Sprite3DScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sprite3DScene.cpp; path = ../Classes/Sprite3DScene.cpp; sourceTree = "<group>"; };
 		E556F8C019CFFBC300BDC29A /* Sprite3DScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sprite3DScene.h; path = ../Classes/Sprite3DScene.h; sourceTree = "<group>"; };
 		E556F8C419D018DF00BDC29A /* Sprite3DTest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sprite3DTest; sourceTree = "<group>"; };
@@ -342,6 +357,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E516E93219D29CDC00237229 /* GridGraph */,
+				E516E92419D271D600237229 /* tiledmap */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -463,6 +480,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E516E92F19D274D800237229 /* tiledmap */,
 				E556F8C419D018DF00BDC29A /* Sprite3DTest */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
@@ -470,6 +488,28 @@
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		E516E92419D271D600237229 /* tiledmap */ = {
+			isa = PBXGroup;
+			children = (
+				E516E92719D271E800237229 /* TiledMapLayer.cpp */,
+				E516E92819D271E800237229 /* TiledMapLayer.h */,
+				E516E92B19D2724500237229 /* TiledMapScene.cpp */,
+				E516E92C19D2724500237229 /* TiledMapScene.h */,
+			);
+			name = tiledmap;
+			path = ../Classes/tiledmap;
+			sourceTree = "<group>";
+		};
+		E516E93219D29CDC00237229 /* GridGraph */ = {
+			isa = PBXGroup;
+			children = (
+				E516E93319D29D3100237229 /* GridMap.cpp */,
+				E516E93419D29D3100237229 /* GridMap.h */,
+			);
+			name = GridGraph;
+			path = ../Classes/GridGraph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -655,6 +695,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				E516E93019D274D800237229 /* tiledmap in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,6 +708,7 @@
 				5087E75317EB910900C73F5D /* CloseNormal.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				5087E75417EB910900C73F5D /* CloseSelected.png in Resources */,
+				E516E93119D274D800237229 /* tiledmap in Resources */,
 				5087E75517EB910900C73F5D /* HelloWorld.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,10 +720,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E516E92D19D2724500237229 /* TiledMapScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				E556F8C119CFFBC300BDC29A /* Sprite3DScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				E516E93519D29D3100237229 /* GridMap.cpp in Sources */,
+				E516E92919D271E800237229 /* TiledMapLayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
@@ -692,8 +737,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
+				E516E92E19D2724500237229 /* TiledMapScene.cpp in Sources */,
+				E516E93619D29D3100237229 /* GridMap.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				E516E92A19D271E800237229 /* TiledMapLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

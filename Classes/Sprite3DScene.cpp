@@ -26,7 +26,7 @@ bool Sprite3DScene::init()
         sprite->setScale(6);
         sprite->setRotation3D(Vec3(0,180,0));
 //        sprite->setPosition(Vec2(size.width/2, size.height));
-        sprite->setPosition3D(Vec3(size.width/2, size.height/2, 0.0f));
+        sprite->setPosition3D(Vec3(size.width/2, size.height - 100, 0.0f));
         
         addChild(sprite);
         
