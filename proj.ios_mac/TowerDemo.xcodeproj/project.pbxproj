@@ -69,6 +69,9 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E503BFA219D3C3FB00F2D9EA /* Dijkstra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E503BFA019D3C3FB00F2D9EA /* Dijkstra.cpp */; };
+		E503BFA719D3E2E600F2D9EA /* GraphPathFinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E503BFA519D3E2E600F2D9EA /* GraphPathFinding.cpp */; };
+		E503BFAB19D3EF8000F2D9EA /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E503BFA919D3EF8000F2D9EA /* Vertex.cpp */; };
 		E516E92919D271E800237229 /* TiledMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E92719D271E800237229 /* TiledMapLayer.cpp */; };
 		E516E92A19D271E800237229 /* TiledMapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E92719D271E800237229 /* TiledMapLayer.cpp */; };
 		E516E92D19D2724500237229 /* TiledMapScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E516E92B19D2724500237229 /* TiledMapScene.cpp */; };
@@ -278,6 +281,12 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E503BFA019D3C3FB00F2D9EA /* Dijkstra.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dijkstra.cpp; sourceTree = "<group>"; };
+		E503BFA119D3C3FB00F2D9EA /* Dijkstra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dijkstra.h; sourceTree = "<group>"; };
+		E503BFA519D3E2E600F2D9EA /* GraphPathFinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphPathFinding.cpp; sourceTree = "<group>"; };
+		E503BFA619D3E2E600F2D9EA /* GraphPathFinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphPathFinding.h; sourceTree = "<group>"; };
+		E503BFA919D3EF8000F2D9EA /* Vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
+		E503BFAA19D3EF8000F2D9EA /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 		E516E92719D271E800237229 /* TiledMapLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TiledMapLayer.cpp; sourceTree = "<group>"; };
 		E516E92819D271E800237229 /* TiledMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledMapLayer.h; sourceTree = "<group>"; };
 		E516E92B19D2724500237229 /* TiledMapScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TiledMapScene.cpp; sourceTree = "<group>"; };
@@ -507,6 +516,12 @@
 			children = (
 				E516E93319D29D3100237229 /* GridMap.cpp */,
 				E516E93419D29D3100237229 /* GridMap.h */,
+				E503BFA019D3C3FB00F2D9EA /* Dijkstra.cpp */,
+				E503BFA119D3C3FB00F2D9EA /* Dijkstra.h */,
+				E503BFA519D3E2E600F2D9EA /* GraphPathFinding.cpp */,
+				E503BFA619D3E2E600F2D9EA /* GraphPathFinding.h */,
+				E503BFA919D3EF8000F2D9EA /* Vertex.cpp */,
+				E503BFAA19D3EF8000F2D9EA /* Vertex.h */,
 			);
 			name = GridGraph;
 			path = ../Classes/GridGraph;
@@ -721,12 +736,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E516E92D19D2724500237229 /* TiledMapScene.cpp in Sources */,
+				E503BFA219D3C3FB00F2D9EA /* Dijkstra.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				E556F8C119CFFBC300BDC29A /* Sprite3DScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				E503BFA719D3E2E600F2D9EA /* GraphPathFinding.cpp in Sources */,
 				E516E93519D29D3100237229 /* GridMap.cpp in Sources */,
 				E516E92919D271E800237229 /* TiledMapLayer.cpp in Sources */,
+				E503BFAB19D3EF8000F2D9EA /* Vertex.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);

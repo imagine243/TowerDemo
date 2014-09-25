@@ -7,8 +7,7 @@
 //
 
 #include "GridMap.h"
-
-
+#include "Vertex.h"
 
 GridMap::GridMap(int width,int height):width(width),height(height)
 {
@@ -35,6 +34,10 @@ GridMap::~GridMap()
         delete  [] p[row];
     }
     delete p;
+    
+    for (auto & kv : vertexs) {
+        delete kv.second;
+    }
 }
 
 void GridMap::setGridVertexType(int x, int y, vertex_type type)
@@ -44,4 +47,40 @@ void GridMap::setGridVertexType(int x, int y, vertex_type type)
     }
     
     p[x][y] = type;
+    
+    Vertex * vertex = nullptr;
+    if (vertexs.find(x * 10 + y) != vertexs.end())
+    {
+        vertex = vertexs.find(x * 10 + y)->second;
+    }
+    
+    if (type == vertex_vertex) {
+        //add to vertexs
+        if (vertex == nullptr) {
+            vertex = new Vertex(x,y);
+        }
+        
+        vertexs[x * 10 + y] = vertex;
+    }else{
+        //delete form vertexs
+        if (vertex) {
+            vertexs.erase(x * 10 + y);
+            delete vertex;
+        }
+        
+    }
+    
+}
+int GridMap::getGridVertexType(int x, int y)
+{
+    if (x >= width || y >= height) {
+        return vertex_default;
+    }
+    
+    return p[x][y];
+}
+
+std::vector<Vertex *> & GridMap::getRoundVertex()
+{
+    
 }
