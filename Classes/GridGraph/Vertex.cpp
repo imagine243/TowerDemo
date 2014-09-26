@@ -58,18 +58,18 @@ int Vertex::getY()
     return y;
 }
 
-int Vertex::getCost()
+float Vertex::getCost()
 {
-    return cost;
+    return this->cost;
 }
 
 void Vertex::getGridXYById(const int & id, int & x, int & y)
 {
-    x = id/10;
-    y = id % 10;
+    x = id/ID_PARA;
+    y = id % ID_PARA;
 }
 
 int Vertex::getGridIdByXY(const int & x , const int & y)
 {
-    return  x * 10 + y;
+    return  x * ID_PARA + y;
 }

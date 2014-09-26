@@ -49,9 +49,9 @@ void GridMap::setGridVertexType(int x, int y, vertex_type type)
     p[x][y] = type;
     
     Vertex * vertex = nullptr;
-    if (vertexs.find(x * 10 + y) != vertexs.end())
+    if (vertexs.find(x * ID_PARA + y) != vertexs.end())
     {
-        vertex = vertexs.find(x * 10 + y)->second;
+        vertex = vertexs.find(x * ID_PARA + y)->second;
     }
     
     if (type == vertex_vertex) {
@@ -60,17 +60,18 @@ void GridMap::setGridVertexType(int x, int y, vertex_type type)
             vertex = new Vertex(x,y);
         }
         
-        vertexs[x * 10 + y] = vertex;
+        vertexs[x * ID_PARA + y] = vertex;
     }else{
         //delete form vertexs
         if (vertex) {
-            vertexs.erase(x * 10 + y);
+            vertexs.erase(x * ID_PARA + y);
             delete vertex;
         }
         
     }
     
 }
+
 int GridMap::getGridVertexType(int x, int y)
 {
     if (x >= width || y >= height) {
@@ -80,7 +81,47 @@ int GridMap::getGridVertexType(int x, int y)
     return p[x][y];
 }
 
-std::vector<Vertex *> & GridMap::getRoundVertex()
+Vertex * GridMap::getVertex(int x, int y)
 {
+    if (x < 0 || y < 0) {
+        return nullptr;
+    }
+    
+    if (getGridVertexType(x, y) != vertex_vertex) {
+        return nullptr;
+    }
+    
+    if (vertexs.find(x * ID_PARA + y) == vertexs.end()) {
+        return nullptr;
+    }
+    
+    return vertexs.find(x * ID_PARA + y)->second;
     
 }
+
+void GridMap::getRoundVertex(Vertex * vertex ,std::vector<Vertex *> & aroundVertexs)
+{
+    if (vertex == nullptr) {
+        return;
+    }
+    
+    int x = vertex->getX();
+    int y = vertex->getY();
+    
+    for (int tempX = x - 1; tempX <= x + 1; tempX++) {
+        for (int tempY = y - 1; tempY <= y + 1; tempY++) {
+            
+            if (tempX == x && tempY == y) {
+                continue;
+            }
+            
+            Vertex * tempVertex = getVertex(tempX, tempY);
+            
+            if (tempVertex != nullptr) {
+                aroundVertexs.push_back(tempVertex);
+            }
+        }
+    }
+}
+
+

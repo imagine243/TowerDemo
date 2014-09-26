@@ -40,7 +40,8 @@ public:
     
     const std::unordered_map<int , Vertex *>& getVertexs()const {return vertexs;};
     
-    std::vector<Vertex *> & getRoundVertex();
+    Vertex * getVertex(int x, int y);
+    void getRoundVertex(Vertex * vertex ,std::vector<Vertex *> & aroundVertexs);
     
 public:
 };

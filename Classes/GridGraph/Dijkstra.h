@@ -20,8 +20,9 @@ public:
     virtual ~Dijkstra(){};
     
 public:
-    virtual void Execute(const GridMap & gridMap, int startId ,int endId);
+    virtual void Execute(GridMap & gridMap, int startId ,int endId);
     Vertex * ExtractMin(std::vector<Vertex *> & Q);
+    void relax(Vertex * v1, Vertex * v2 ,float weight);
 };
 
 #endif /* defined(__TowerDemo__Dijkstra__) */

@@ -16,13 +16,13 @@
 class Vertex;
 
 class GraphPathFinding {
-protected:
+public:
     std::unordered_map<Vertex * , Vertex *> pathTree;
 public:
     GraphPathFinding(){};
     virtual ~GraphPathFinding(){};
     
-    virtual void Execute(const GridMap & gridMap, int startId ,int endId) = 0;
+    virtual void Execute(GridMap & gridMap, int startId ,int endId) = 0;
 };
 
 #endif /* defined(__TowerDemo__GraphPathFinding__) */

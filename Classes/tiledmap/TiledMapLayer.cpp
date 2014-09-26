@@ -8,7 +8,17 @@
 
 #include "TiledMapLayer.h"
 #include "GridMap.h"
+#include "Dijkstra.h"
+#include "Vertex.h"
 
+TiledMapLayer::TiledMapLayer():mapGraph(nullptr)
+{
+    
+}
+TiledMapLayer::~TiledMapLayer()
+{
+    CC_SAFE_DELETE(mapGraph);
+}
 bool TiledMapLayer::init()
 {
     if (Layer::init()) {
@@ -37,6 +47,30 @@ bool TiledMapLayer::init()
             }
             printf("\n");
         }
+        
+        Dijkstra dij;
+        dij.Execute(*mapGraph, 10, 39 * ID_PARA + 13);
+        Vertex * vertex = mapGraph->getVertex(39, 13);
+        
+        printf("path tree length %d \n", dij.pathTree.size());
+        
+        
+//        for (auto it = dij.pathTree.find(vertex) , end = dij.pathTree.end(); it->second != 0&& it != end ; it= dij.pathTree.find(it->second)) {
+//            mapLayer->setTileGID(31, Vec2(vertex->getX(), vertex->getY()));
+//            vertex = it->second;
+//        }
+        
+        auto end = dij.pathTree.end();
+        while (vertex != nullptr) {
+            mapLayer->setTileGID(31, Vec2(vertex->getX(), vertex->getY()));
+            auto it = dij.pathTree.find(vertex);
+            if (it != end && it->second != nullptr) {
+                vertex = it->second;
+            }else{
+                vertex = nullptr;
+            }
+        }
+        
         
         return true;
     }

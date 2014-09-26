@@ -21,8 +21,8 @@ protected:
     GridMap * mapGraph;
 public:
     
-    TiledMapLayer():mapGraph(nullptr){};
-    virtual ~TiledMapLayer(){};
+    TiledMapLayer();
+    virtual ~TiledMapLayer();
     
     CREATE_FUNC(TiledMapLayer);
     virtual bool init();

@@ -15,7 +15,7 @@ bool TiledMapScene::init()
     if (Layer::init()) {
         
         auto tiledMaplayer = TiledMapLayer::create();
-        tiledMaplayer->setScale(0.75);
+        tiledMaplayer->setScale(0.5);
         tiledMaplayer->setAnchorPoint(Vec2(0.0f,0.0f));
         tiledMaplayer->setPosition(Vec2(0.0f, 0.0f));
         this->addChild(tiledMaplayer);

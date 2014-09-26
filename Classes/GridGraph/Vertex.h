@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 
+const int ID_PARA = 10000;
+
 class Vertex {
 private:
     int id;
@@ -27,7 +29,7 @@ public:
     int getId();
     int getX();
     int getY();
-    int getCost();
+    float getCost();
     void getGridXYById(const int & id, int & x, int & y);
     int getGridIdByXY(const int & x , const int & y);
 };
