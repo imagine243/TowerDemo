@@ -12,9 +12,18 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp
+                   ../../Classes/HelloWorldScene.cpp \
+                   ../../Classes/Sprite3DScene.cpp \
+                   ../../Classes/tiledmap/TiledMapScene.cpp \
+                   ../../Classes/tiledmap/TiledMapLayer.cpp \
+                   ../../Classes/GridGraph/GridMap.cpp \
+                   ../../Classes/GridGraph/Dijkstra.cpp \
+                   ../../Classes/GridGraph/GraphPathFinding.cpp \
+                   ../../Classes/GridGraph/Vertex.cpp 
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
+					$(LOCAL_PATH)/../../Classes/tiledmap \
+					$(LOCAL_PATH)/../../Classes/GridGraph 
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

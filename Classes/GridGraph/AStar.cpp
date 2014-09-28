@@ -1,44 +1,49 @@
 //
-//  Dijkstra.cpp
+//  AStar.cpp
 //  TowerDemo
 //
-//  Created by chao on 14-9-25.
+//  Created by chao on 14-9-28.
 //
 //
 
-#include "Dijkstra.h"
+#include "AStar.h"
 #include "GridMap.h"
 #include "Vertex.h"
 #include "stdlib.h"
 
-void Dijkstra::Execute(GridMap & gridMap, int startId ,int endId)
+void AStar::Execute(GridMap & gridMap, int startId ,int endId)
 {
     this->pathTree.clear();
     
     const auto & vertexs = gridMap.getVertexs();
     
     Vertex * pStart = vertexs.find(startId)->second;
-//    std::vector<Vertex *> Q;
+    Vertex * pEnd = vertexs.find(endId)->second;
+    end = pEnd;
+    //    std::vector<Vertex *> Q;
     std::unordered_set<Vertex *> Q;
     
     //每一个节点的cost初始化为一个极大值
     for (auto & it :vertexs) {
         it.second->setCost(MAXCOST);
-//        Q.push_back(it.second);
-//        printf("vertex cost %f \n", it.second->getCost());
+        it.second->setHeuristic(MAXCOST);
+        //        Q.push_back(it.second);
+        //        printf("vertex cost %f \n", it.second->getCost());
     }
     
     //起点的前置节点为0
     this->pathTree[pStart] = nullptr;
     pStart->setCost(0);
+    pStart->setHeuristic(estimate(pStart, pEnd));
     
-//    Q.push_back(pStart);
+    //    Q.push_back(pStart);
     Q.insert(pStart);
     
     bool flag = true;
     
     for (; Q.size() > 0; ) {
         auto v = ExtractMin(Q);
+        
         
         if (endId == v->getId()) {
             
@@ -63,12 +68,6 @@ void Dijkstra::Execute(GridMap & gridMap, int startId ,int endId)
                 weight = SQRT_2;
             }
             
-//            if (endId == it->getId()) {
-//                this->pathTree[it] = v;
-//                printf("end per vertex x %d y %d       vertex x %d y %d \n",v->getX(),v->getY(), it->getX(),it->getY());
-//                return;
-//            }
-            
             bool isRelax = relax(v, it, weight);
             
             if (isRelax) {
@@ -79,28 +78,15 @@ void Dijkstra::Execute(GridMap & gridMap, int startId ,int endId)
     }
 }
 
-Vertex * Dijkstra::ExtractMin(std::unordered_set<Vertex *> & Q)
+Vertex * AStar::ExtractMin(std::unordered_set<Vertex *> & Q)
 {
     Vertex * ret = nullptr;
-//    ret = Q[0];
-//    int pos = 0;
-//    unsigned long size = Q.size();
-//    for (int i = 1; i < size; i++) {
-////        printf("min vertex x %d y %d cost %f \n", Q[i]->getX(),Q[i]->getY(),Q[i]->getCost());
-//        if (ret->getCost() > Q[i]->getCost()) {
-//            ret = Q[i];
-//            pos = i;
-//        }
-//    }
-//    
-//    Q.erase(Q.begin() + pos);
-    
     
     auto it = Q.begin();
     ret = *it;
     it++;
     for (; it != Q.end(); it++) {
-        if (ret->getCost() > (*it)->getCost()) {
+        if (ret->getHeuristic() > (*it)->getHeuristic()) {
             ret = *it;
         }
     }
@@ -110,11 +96,15 @@ Vertex * Dijkstra::ExtractMin(std::unordered_set<Vertex *> & Q)
     return ret;
 }
 
-bool Dijkstra::relax(Vertex * v1, Vertex * v2 ,float weight)
+bool AStar::relax(Vertex * v1, Vertex * v2 ,float weight)
 {
-    float cost = v1->getCost() + weight;
-    if (cost < v2->getCost()) {
-        v2->setCost(cost);
+    float G = v1->getCost() + weight;
+    float h = estimate(v2, end);
+    float heuristic = G + h;
+    
+    if (heuristic < v2->getHeuristic()) {
+        v2->setCost(G);
+        v2->setHeuristic(heuristic);
         this->pathTree[v2] = v1;
         printf("per vertex x %d y %d cost %f      vertex x %d y %d cost %f \n",v1->getX(),v1->getY(),v1->getCost(), v2->getX(),v2->getY(),v2->getCost());
         
@@ -122,4 +112,13 @@ bool Dijkstra::relax(Vertex * v1, Vertex * v2 ,float weight)
     }
     
     return false;
+}
+
+float AStar::estimate(Vertex * v1, Vertex * end )
+{
+    int width = abs(v1->getX() - end->getX());
+    int height = abs(v1->getY()- end->getY());
+    
+    float length = abs(width - height) * SQRT_2 + ((width - height) > 0 ? (width - height) : (height - width));
+    return length;
 }

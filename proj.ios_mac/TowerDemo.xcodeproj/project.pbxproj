@@ -83,6 +83,7 @@
 		E556F8C119CFFBC300BDC29A /* Sprite3DScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E556F8BF19CFFBC300BDC29A /* Sprite3DScene.cpp */; };
 		E556F8C519D018DF00BDC29A /* Sprite3DTest in Resources */ = {isa = PBXBuildFile; fileRef = E556F8C419D018DF00BDC29A /* Sprite3DTest */; };
 		E556F8C619D018DF00BDC29A /* Sprite3DTest in Resources */ = {isa = PBXBuildFile; fileRef = E556F8C419D018DF00BDC29A /* Sprite3DTest */; };
+		E5F9437D19D7F7F100A552D4 /* AStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5F9437B19D7F7F100A552D4 /* AStar.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,6 +298,8 @@
 		E556F8BF19CFFBC300BDC29A /* Sprite3DScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sprite3DScene.cpp; path = ../Classes/Sprite3DScene.cpp; sourceTree = "<group>"; };
 		E556F8C019CFFBC300BDC29A /* Sprite3DScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sprite3DScene.h; path = ../Classes/Sprite3DScene.h; sourceTree = "<group>"; };
 		E556F8C419D018DF00BDC29A /* Sprite3DTest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sprite3DTest; sourceTree = "<group>"; };
+		E5F9437B19D7F7F100A552D4 /* AStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AStar.cpp; sourceTree = "<group>"; };
+		E5F9437C19D7F7F100A552D4 /* AStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AStar.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,6 +525,8 @@
 				E503BFA619D3E2E600F2D9EA /* GraphPathFinding.h */,
 				E503BFA919D3EF8000F2D9EA /* Vertex.cpp */,
 				E503BFAA19D3EF8000F2D9EA /* Vertex.h */,
+				E5F9437B19D7F7F100A552D4 /* AStar.cpp */,
+				E5F9437C19D7F7F100A552D4 /* AStar.h */,
 			);
 			name = GridGraph;
 			path = ../Classes/GridGraph;
@@ -740,6 +745,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				E556F8C119CFFBC300BDC29A /* Sprite3DScene.cpp in Sources */,
+				E5F9437D19D7F7F100A552D4 /* AStar.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				E503BFA719D3E2E600F2D9EA /* GraphPathFinding.cpp in Sources */,
 				E516E93519D29D3100237229 /* GridMap.cpp in Sources */,

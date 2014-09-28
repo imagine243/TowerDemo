@@ -19,6 +19,7 @@ private:
     int x;
     int y;
     float cost;
+    float heuristic;
 public:
     Vertex(int id,float cost = 0.0f);
     Vertex(int x, int y, float cost = 0.0f);
@@ -30,6 +31,8 @@ public:
     int getX();
     int getY();
     float getCost();
+    float getHeuristic();
+    void setHeuristic(float heuristic);
     void getGridXYById(const int & id, int & x, int & y);
     int getGridIdByXY(const int & x , const int & y);
 };

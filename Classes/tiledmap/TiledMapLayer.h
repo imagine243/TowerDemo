@@ -17,6 +17,9 @@ USING_NS_CC;
 class GridMap;
 
 class TiledMapLayer :public Layer {
+private:
+    float startX;
+    float startY;
 protected:
     GridMap * mapGraph;
 public:
@@ -26,6 +29,8 @@ public:
     
     CREATE_FUNC(TiledMapLayer);
     virtual bool init();
+    virtual bool onTouchBegan(Touch *touch, Event *unused_event); 
+    virtual void onTouchMoved(Touch *touch, Event *unused_event); 
 };
 
 #endif /* defined(__TowerDemo__TiledMapLayer__) */

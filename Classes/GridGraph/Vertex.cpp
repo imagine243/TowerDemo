@@ -12,12 +12,14 @@ Vertex::Vertex(int id,float cost)
 {
     this->cost = cost;
     this->setId(id);
+    this->heuristic = 0;
 }
 
 Vertex::Vertex(int x, int y, float cost)
 {
     this->cost = cost;
     this->setXY(x, y);
+    this->heuristic = 0;
 }
 
 Vertex::~Vertex()
@@ -61,6 +63,16 @@ int Vertex::getY()
 float Vertex::getCost()
 {
     return this->cost;
+}
+
+float Vertex::getHeuristic()
+{
+    return this->heuristic;
+}
+
+void Vertex::setHeuristic(float heuristic)
+{
+    this->heuristic = heuristic;
 }
 
 void Vertex::getGridXYById(const int & id, int & x, int & y)

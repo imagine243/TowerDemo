@@ -10,6 +10,7 @@
 #include "GridMap.h"
 #include "Dijkstra.h"
 #include "Vertex.h"
+#include "AStar.h"
 
 TiledMapLayer::TiledMapLayer():mapGraph(nullptr)
 {
@@ -52,7 +53,12 @@ bool TiledMapLayer::init()
         dij.Execute(*mapGraph, 10, 39 * ID_PARA + 13);
         Vertex * vertex = mapGraph->getVertex(39, 13);
         
-        printf("path tree length %d \n", dij.pathTree.size());
+
+//        AStar dij;
+//        dij.Execute(*mapGraph, 10, 39 * ID_PARA + 13);
+//        Vertex * vertex = mapGraph->getVertex(39, 13);
+        
+        printf("path tree length %lld \n", dij.pathTree.size());
         
         
 //        for (auto it = dij.pathTree.find(vertex) , end = dij.pathTree.end(); it->second != 0&& it != end ; it= dij.pathTree.find(it->second)) {
@@ -71,9 +77,42 @@ bool TiledMapLayer::init()
             }
         }
         
+        auto dispatcher = Director::getInstance()->getEventDispatcher();
+        auto listener = EventListenerTouchOneByOne::create();
+        
+        listener->onTouchBegan = CC_CALLBACK_2(TiledMapLayer::onTouchBegan, this);
+        listener->onTouchMoved = CC_CALLBACK_2(TiledMapLayer::onTouchMoved, this);
+        listener->onTouchEnded = CC_CALLBACK_2(TiledMapLayer::onTouchEnded, this);
+        dispatcher->addEventListenerWithSceneGraphPriority(listener, this);
         
         return true;
     }
     
     return false;
+}
+
+void TiledMapLayer::onTouchMoved(Touch *touch, Event *unused_event)
+{
+    Layer::onTouchMoved(touch, unused_event);
+    
+    float mx = touch->getLocation().x - startX;
+    float my = touch->getLocation().y - startY;
+    
+    Vec2 pos = this->getPosition();
+    this->setPosition(Vec2(pos.x + mx, pos.y + my));
+    
+    this->startX = touch->getLocation().x;
+    this->startY = touch->getLocation().y;
+    
+    
+}
+
+
+bool TiledMapLayer::onTouchBegan(Touch *touch, Event *unused_event)
+{
+//    Layer::onTouchBegan(touch, unused_event);
+    this->startX = touch->getLocation().x;
+    this->startY = touch->getLocation().y;
+    
+    return true;
 }

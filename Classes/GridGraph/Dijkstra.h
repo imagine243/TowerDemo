@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <unordered_set>
 #include "GridMap.h"
 #include "GraphPathFinding.h"
 
@@ -21,8 +22,8 @@ public:
     
 public:
     virtual void Execute(GridMap & gridMap, int startId ,int endId);
-    Vertex * ExtractMin(std::vector<Vertex *> & Q);
-    void relax(Vertex * v1, Vertex * v2 ,float weight);
+    Vertex * ExtractMin(std::unordered_set<Vertex *> & Q);
+    bool relax(Vertex * v1, Vertex * v2 ,float weight);
 };
 
 #endif /* defined(__TowerDemo__Dijkstra__) */

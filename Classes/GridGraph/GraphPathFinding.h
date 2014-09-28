@@ -15,6 +15,10 @@
 
 class Vertex;
 
+const float MAXCOST = 100000000.0f;
+
+const float SQRT_2 = 1.41;
+
 class GraphPathFinding {
 public:
     std::unordered_map<Vertex * , Vertex *> pathTree;
