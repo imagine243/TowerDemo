@@ -83,6 +83,12 @@
 		E556F8C119CFFBC300BDC29A /* Sprite3DScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E556F8BF19CFFBC300BDC29A /* Sprite3DScene.cpp */; };
 		E556F8C519D018DF00BDC29A /* Sprite3DTest in Resources */ = {isa = PBXBuildFile; fileRef = E556F8C419D018DF00BDC29A /* Sprite3DTest */; };
 		E556F8C619D018DF00BDC29A /* Sprite3DTest in Resources */ = {isa = PBXBuildFile; fileRef = E556F8C419D018DF00BDC29A /* Sprite3DTest */; };
+		E5D8372E19E8FAA400E50CE9 /* BevTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5D8372C19E8FAA400E50CE9 /* BevTree.cpp */; };
+		E5D8372F19E8FAA400E50CE9 /* BevTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5D8372C19E8FAA400E50CE9 /* BevTree.cpp */; };
+		E5D8373219E8FEFA00E50CE9 /* BevUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5D8373019E8FEFA00E50CE9 /* BevUtil.cpp */; };
+		E5D8373319E8FEFA00E50CE9 /* BevUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5D8373019E8FEFA00E50CE9 /* BevUtil.cpp */; };
+		E5D8373719E9087500E50CE9 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5D8373519E9087500E50CE9 /* util.cpp */; };
+		E5D8373819E9087500E50CE9 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5D8373519E9087500E50CE9 /* util.cpp */; };
 		E5F9437D19D7F7F100A552D4 /* AStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5F9437B19D7F7F100A552D4 /* AStar.cpp */; };
 /* End PBXBuildFile section */
 
@@ -298,6 +304,12 @@
 		E556F8BF19CFFBC300BDC29A /* Sprite3DScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sprite3DScene.cpp; path = ../Classes/Sprite3DScene.cpp; sourceTree = "<group>"; };
 		E556F8C019CFFBC300BDC29A /* Sprite3DScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sprite3DScene.h; path = ../Classes/Sprite3DScene.h; sourceTree = "<group>"; };
 		E556F8C419D018DF00BDC29A /* Sprite3DTest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sprite3DTest; sourceTree = "<group>"; };
+		E5D8372C19E8FAA400E50CE9 /* BevTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BevTree.cpp; sourceTree = "<group>"; };
+		E5D8372D19E8FAA400E50CE9 /* BevTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BevTree.h; sourceTree = "<group>"; };
+		E5D8373019E8FEFA00E50CE9 /* BevUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BevUtil.cpp; sourceTree = "<group>"; };
+		E5D8373119E8FEFA00E50CE9 /* BevUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BevUtil.h; sourceTree = "<group>"; };
+		E5D8373519E9087500E50CE9 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		E5D8373619E9087500E50CE9 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		E5F9437B19D7F7F100A552D4 /* AStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AStar.cpp; sourceTree = "<group>"; };
 		E5F9437C19D7F7F100A552D4 /* AStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AStar.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -369,6 +381,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E5D8373419E9086500E50CE9 /* utils */,
+				E5D8372919E8DFC400E50CE9 /* bevtree */,
 				E516E93219D29CDC00237229 /* GridGraph */,
 				E516E92419D271D600237229 /* tiledmap */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
@@ -530,6 +544,28 @@
 			);
 			name = GridGraph;
 			path = ../Classes/GridGraph;
+			sourceTree = "<group>";
+		};
+		E5D8372919E8DFC400E50CE9 /* bevtree */ = {
+			isa = PBXGroup;
+			children = (
+				E5D8372C19E8FAA400E50CE9 /* BevTree.cpp */,
+				E5D8372D19E8FAA400E50CE9 /* BevTree.h */,
+				E5D8373019E8FEFA00E50CE9 /* BevUtil.cpp */,
+				E5D8373119E8FEFA00E50CE9 /* BevUtil.h */,
+			);
+			name = bevtree;
+			path = ../Classes/bevtree;
+			sourceTree = "<group>";
+		};
+		E5D8373419E9086500E50CE9 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				E5D8373519E9087500E50CE9 /* util.cpp */,
+				E5D8373619E9087500E50CE9 /* util.h */,
+			);
+			name = utils;
+			path = ../Classes/utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -743,11 +779,14 @@
 				E516E92D19D2724500237229 /* TiledMapScene.cpp in Sources */,
 				E503BFA219D3C3FB00F2D9EA /* Dijkstra.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				E5D8372E19E8FAA400E50CE9 /* BevTree.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				E556F8C119CFFBC300BDC29A /* Sprite3DScene.cpp in Sources */,
 				E5F9437D19D7F7F100A552D4 /* AStar.cpp in Sources */,
+				E5D8373719E9087500E50CE9 /* util.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				E503BFA719D3E2E600F2D9EA /* GraphPathFinding.cpp in Sources */,
+				E5D8373219E8FEFA00E50CE9 /* BevUtil.cpp in Sources */,
 				E516E93519D29D3100237229 /* GridMap.cpp in Sources */,
 				E516E92919D271E800237229 /* TiledMapLayer.cpp in Sources */,
 				E503BFAB19D3EF8000F2D9EA /* Vertex.cpp in Sources */,
@@ -762,10 +801,13 @@
 			files = (
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				E516E92E19D2724500237229 /* TiledMapScene.cpp in Sources */,
+				E5D8373819E9087500E50CE9 /* util.cpp in Sources */,
 				E516E93619D29D3100237229 /* GridMap.cpp in Sources */,
+				E5D8372F19E8FAA400E50CE9 /* BevTree.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				E516E92A19D271E800237229 /* TiledMapLayer.cpp in Sources */,
+				E5D8373319E8FEFA00E50CE9 /* BevUtil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
