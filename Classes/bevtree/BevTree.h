@@ -25,6 +25,13 @@ namespace BehaviorTree {
         BRS_ERROR_Transition			= -1,
     };
     
+    enum TerminalNodeStaus
+    {
+        TNS_Ready         = 1,
+        TNS_Running       = 2,
+        TNS_Finish        = 3,
+    };
+    
     typedef AnyData InputParam;
     typedef AnyData OutputParam;
     
@@ -286,6 +293,53 @@ namespace BehaviorTree {
         int currentSelectIndex;
         int lastSelectIndex;
     };
+    
+    class BevNodeNonePrioritySelector : public BevNodePrioritySelector
+    {
+    public:
+        BevNodeNonePrioritySelector(BevNode * _parentNode, BevNodePrecondition * _nodePrecondition = nullptr)
+        :BevNodePrioritySelector(_parentNode,_nodePrecondition)
+        {}
+        
+    protected:
+        virtual bool _DoEvaluate(const InputParam& input);
+    };
+    
+    class BevNodeSequence : public BevNode
+    {
+    public:
+        BevNodeSequence(BevNode* _parentNode, BevNodePrecondition *_nodePrecondition = nullptr)
+        :BevNode(_parentNode,_nodePrecondition)
+        ,currentNodeIndex(Limited_InvalidChildNodeIndex)
+        {}
+    protected:
+        virtual bool _DoEvaluate(const InputParam& input);
+        virtual void _DoTransition(const InputParam& input);
+        virtual BevRunningStatus _DoTick(const InputParam & input, const OutputParam & output);
+    private:
+        int currentNodeIndex;
+    };
+    
+    class BevNodeTerminal : public BevNode
+    {
+    public:
+        BevNodeTerminal(BevNode* _parentNode, BevNodePrecondition* _nodePrecondition = nullptr)
+        :BevNode(_parentNode,_nodePrecondition)
+        ,myStatus(TNS_Ready)
+        ,isNeedExit(false)
+        {}
+    protected:
+        virtual void _DoTransition(const InputParam& input);
+        virtual BevRunningStatus _DoTick(const InputParam & input, const OutputParam & output);
+    protected:
+        virtual void _DoEnter(const InputParam& input){};
+        virtual BevRunningStatus _DoExecute(const InputParam& input ,OutputParam& output) {return BRS_Finish;};
+        virtual void _DoExit(const InputParam& input, BevRunningStatus _exitId){};
+    private:
+        TerminalNodeStaus myStatus;
+        bool isNeedExit;
+    };
+    
     
 }
 
