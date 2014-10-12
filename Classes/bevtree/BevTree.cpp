@@ -124,3 +124,100 @@ BevRunningStatus BevNodeSequence::_DoTick(const InputParam & input, const Output
     return bIsFinish;
 }
 
+
+void BevNodeTerminal::_DoTransition(const InputParam& input)
+{
+    if (isNeedExit) {
+        _DoExit(input, BRS_ERROR_Transition);
+    }
+    
+    SetActiveNode(nullptr);
+    myStatus = TNS_Ready;
+    isNeedExit = false;
+    
+}
+
+BevRunningStatus BevNodeTerminal::_DoTick(const InputParam & input, OutputParam & output)
+{
+    BevRunningStatus bIsFinish = BRS_Finish;
+    
+    if (myStatus == TNS_Ready) {
+        _DoEnter(input);
+        isNeedExit = true;
+        myStatus = TNS_Running;
+        SetActiveNode(this);
+    }
+    
+    if (myStatus == TNS_Running) {
+        bIsFinish = _DoExecute(input, output);
+        SetActiveNode(this);
+        if (bIsFinish == BRS_Finish || bIsFinish < 0) {
+            myStatus = TNS_Finish;
+        }
+    }
+    
+    if (myStatus == TNS_Finish) {
+        if (isNeedExit) {
+            _DoExit(input, bIsFinish);
+        }
+        
+        myStatus = TNS_Ready;
+        isNeedExit = false;
+        SetActiveNode(nullptr);
+    }
+    
+    return bIsFinish;
+}
+
+
+bool BevNodeParallel::_DoEvaluate(const InputParam& input)
+{
+    for (unsigned int i = 0; i < childCount; ++i) {
+        BevNode * obn = childNodeList[i];
+        if (childNodeStatusList[i] == BRS_Executing) {
+            if (!obn->Evaluate(input)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+void BevNodeParallel::_DoTransition(const InputParam& input)
+{
+    for (unsigned int i = 0; i < childCount; i++) {
+        childNodeStatusList[i] = BRS_Executing;
+    }
+    
+    for (unsigned int i = 0; i < childCount; i++) {
+        BevNode* obn = childNodeList[i];
+        obn->Transition(input);
+    }
+}
+
+BevRunningStatus BevNodeParallel::_DoTick(const InputParam & input, const OutputParam & output)
+{
+    
+}
+        
+BevNodeParallel& BevNodeParallel::SetFinishCondition(ParallelFinishCondition _condition)
+{
+    myFinishCondition = _condition;
+    return (*this);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

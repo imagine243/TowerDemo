@@ -32,6 +32,12 @@ namespace BehaviorTree {
         TNS_Finish        = 3,
     };
     
+    enum ParallelFinishCondition
+    {
+        PFC_OR = 1,
+        PFC_AND
+    };
+    
     typedef AnyData InputParam;
     typedef AnyData OutputParam;
     
@@ -330,7 +336,7 @@ namespace BehaviorTree {
         {}
     protected:
         virtual void _DoTransition(const InputParam& input);
-        virtual BevRunningStatus _DoTick(const InputParam & input, const OutputParam & output);
+        virtual BevRunningStatus _DoTick(const InputParam & input, OutputParam & output);
     protected:
         virtual void _DoEnter(const InputParam& input){};
         virtual BevRunningStatus _DoExecute(const InputParam& input ,OutputParam& output) {return BRS_Finish;};
@@ -340,7 +346,27 @@ namespace BehaviorTree {
         bool isNeedExit;
     };
     
-    
+    class BevNodeParallel : public BevNode
+    {
+    public:
+        BevNodeParallel(BevNode * _parentNode, BevNodePrecondition* _nodePrecondition = nullptr)
+        :BevNode(_parentNode, _nodePrecondition)
+        ,myFinishCondition(PFC_OR)
+        {
+            for (unsigned int i = 0; i < Limited_MaxChildNodeCount; i++) {
+                childNodeStatusList[i] = BRS_Executing;
+            }
+        }
+        
+        virtual bool _DoEvaluate(const InputParam& input);
+        virtual void _DoTransition(const InputParam& input);
+        virtual BevRunningStatus _DoTick(const InputParam & input, const OutputParam & output);
+        
+        BevNodeParallel& SetFinishCondition(ParallelFinishCondition _condition);
+    private:
+        ParallelFinishCondition myFinishCondition;
+        BevRunningStatus childNodeStatusList[Limited_MaxChildNodeCount];
+    };
 }
 
 #endif /* defined(__TowerDemo__BevTree__) */
