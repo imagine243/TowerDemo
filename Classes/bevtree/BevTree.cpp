@@ -197,7 +197,39 @@ void BevNodeParallel::_DoTransition(const InputParam& input)
 
 BevRunningStatus BevNodeParallel::_DoTick(const InputParam & input, const OutputParam & output)
 {
+    unsigned int finishedChildCount = 0;
+    for (unsigned int i = 0; i < childCount; i++) {
+        BevNode * obn = childNodeList[i];
+        if (myFinishCondition == PFC_OR) {
+            if (childNodeStatusList[i] == BRS_Executing) {
+                childNodeStatusList[i] = obn->Tick(input, output);
+            }
+            
+            if (childNodeStatusList[i] != BRS_Executing) {
+                for (unsigned int i = 0; i < Limited_MaxChildNodeCount; i++) {
+                    childNodeStatusList[i] = BRS_Executing;
+                    return BRS_Finish;
+                }
+            }
+        }else if (myFinishCondition == PFC_AND){
+            if (childNodeStatusList[i] == BRS_Executing) {
+                childNodeStatusList[i] = obn->Tick(input, output);
+            }
+            if (childNodeStatusList[i] != BRS_Executing) {
+                finishedChildCount++;
+            }
+        }else{
+            ASSERT(0);
+        }
+    }
     
+    if (finishedChildCount == childCount) {
+        for (unsigned int i = 0; i < Limited_MaxChildNodeCount; i++) {
+            childNodeStatusList[i] = BRS_Executing;
+        }
+        return BRS_Finish;
+    }
+    return BRS_Executing;
 }
         
 BevNodeParallel& BevNodeParallel::SetFinishCondition(ParallelFinishCondition _condition)
@@ -206,7 +238,20 @@ BevNodeParallel& BevNodeParallel::SetFinishCondition(ParallelFinishCondition _co
     return (*this);
 }
 
+bool BevNodeLoop::_DoEvaluate(const InputParam& input)
+{
+    
+}
 
+void BevNodeLoop::_DoTransition(const InputParam& input)
+{
+    
+}
+
+BevRunningStatus BevNodeLoop::_DoTick(const InputParam & input, const OutputParam & output)
+{
+    
+}
 
 
 

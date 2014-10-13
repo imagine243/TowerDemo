@@ -367,6 +367,25 @@ namespace BehaviorTree {
         ParallelFinishCondition myFinishCondition;
         BevRunningStatus childNodeStatusList[Limited_MaxChildNodeCount];
     };
+    
+    class BevNodeLoop : public BevNode
+    {
+    public:
+        static const int kInfinishLoop = -1;
+    public:
+        BevNodeLoop(BevNode * _parentNode, BevNodePrecondition * _nodePrecondition = nullptr, int _loopCount = kInfinishLoop)
+        :BevNode(_parentNode,_nodePrecondition)
+        ,myLoopCount(_loopCount)
+        ,myCurrentCount(0)
+        {}
+        
+        virtual bool _DoEvaluate(const InputParam& input);
+        virtual void _DoTransition(const InputParam& input);
+        virtual BevRunningStatus _DoTick(const InputParam & input, const OutputParam & output);
+    private:
+        int myLoopCount;
+        int myCurrentCount;
+    };
 }
 
 #endif /* defined(__TowerDemo__BevTree__) */
