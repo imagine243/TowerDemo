@@ -9,6 +9,8 @@
 #include "BevTree.h"
 using namespace BehaviorTree;
 
+namespace BehaviorTree {
+
 bool BevNodePrioritySelector::_DoEvaluate(const InputParam& input)
 {
     currentSelectIndex = Limited_InvalidChildNodeIndex;
@@ -240,22 +242,62 @@ BevNodeParallel& BevNodeParallel::SetFinishCondition(ParallelFinishCondition _co
 
 bool BevNodeLoop::_DoEvaluate(const InputParam& input)
 {
+    bool checkLoopCount = (myLoopCount == kInfinishLoop) || myCurrentCount < myLoopCount;
     
+    if (!checkLoopCount) {
+        return false;
+    }
+    
+    if (_CheckIndex(0)) {
+        BevNode * obn = childNodeList[0];
+        if (obn->Evaluate(input)) {
+            return true;
+        }
+    }
+    
+    return false;
 }
 
 void BevNodeLoop::_DoTransition(const InputParam& input)
 {
+    if (_CheckIndex(0)) {
+        BevNode * obn = childNodeList[0];
+        obn->Transition(input);
+    }
     
+    myCurrentCount = 0;
 }
 
 BevRunningStatus BevNodeLoop::_DoTick(const InputParam & input, const OutputParam & output)
 {
+    BevRunningStatus bIsFinish = BRS_Finish;
     
+    if (_CheckIndex(0)) {
+        BevNode * obn = childNodeList[0];
+        bIsFinish = obn->Tick(input, output);
+        
+        if (bIsFinish == BRS_Finish) {
+            if (myLoopCount != kInfinishLoop) {
+                myCurrentCount++;
+                if (myCurrentCount == myLoopCount) {
+                    bIsFinish = BRS_Executing;
+                }
+            }else{
+                bIsFinish = BRS_Executing;
+            }
+        }
+    }
+    
+    if (bIsFinish) {
+        myCurrentCount = 0;
+    }
+    
+    return bIsFinish;
 }
 
 
 
-
+}
 
 
 

@@ -386,6 +386,63 @@ namespace BehaviorTree {
         int myLoopCount;
         int myCurrentCount;
     };
+    
+    class BevNodeFactory
+    {
+    public:
+        
+        static BevNode& createPrioritySelectorNode(BevNode* _parent,const char * _debugName)
+        {
+            BevNodePrioritySelector * pReturn = new BevNodePrioritySelector(_parent);
+            createNodeCommon(pReturn, _parent, _debugName);
+            return (*pReturn);
+        }
+        
+        
+        static BevNode& createNonePrioritySelectorNode(BevNode* _parent,const char * _debugName)
+        {
+            BevNodeNonePrioritySelector * pReturn = new BevNodeNonePrioritySelector(_parent);
+            createNodeCommon(pReturn, _parent, _debugName);
+            return (*pReturn);
+        }
+        
+        static BevNode& createSequenceNode(BevNode* _parent,const char * _debugName)
+        {
+            BevNodeSequence * pReturn = new BevNodeSequence(_parent);
+            createNodeCommon(pReturn, _parent, _debugName);
+            return (*pReturn);
+        }
+        
+        static BevNode& createParallelNode(BevNode* _parent,const char * _debugName)
+        {
+            BevNodeParallel * pReturn = new BevNodeParallel(_parent);
+            createNodeCommon(pReturn, _parent, _debugName);
+            return (*pReturn);
+        }
+        
+        static BevNode& createTeminalNode(BevNode* _parent,const char * _debugName)
+        {
+            BevNodeLoop * pReturn = new BevNodeLoop(_parent);
+            createNodeCommon(pReturn, _parent, _debugName);
+            return (*pReturn);
+        }
+        
+        template<typename T>
+        static BevNode& createTeminalNode(BevNode* _parent,const char * _debugName)
+        {
+            BevNodeTerminal * pReturn = new T(_parent);
+            createNodeCommon(pReturn, _parent, _debugName);
+            return (*pReturn);
+        }
+    private:
+        static void createNodeCommon(BevNode * _me, BevNode * _parent, const char * _debugName)
+        {
+            if (_parent) {
+                _parent->AddChildNode(_me);
+                _me->SetDebugName(_debugName);
+            }
+        }
+    };
 }
 
 #endif /* defined(__TowerDemo__BevTree__) */
